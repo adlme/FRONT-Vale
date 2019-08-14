@@ -3,19 +3,20 @@ import axios from 'axios';
 class AuthService {
   constructor() {
     this.auth = axios.create({
-      baseURL: 'http://localhost:4000'
+      baseURL: 'http://localhost:4000',
+      withCredentials: true,
     })
   }
 
   signup(user) {
-    const { username, password } = user;
-    return this.auth.post('/auth/signup', {username, password})
+    const { email, password } = user;
+    return this.auth.post('/auth/signup', {email, password})
       .then(({ data }) => data);
   }
 
   login(user) {
-    const { username, password } = user;
-    return this.auth.post('/auth/login', {username, password})
+    const { email, password } = user;
+    return this.auth.post('/auth/login', {email, password})
       .then(({ data }) => data);
   }
 
