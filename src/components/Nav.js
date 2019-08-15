@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import withAuth from '../components/withAuth';
 
-import Sidebar from '../components/Sidebar';
-
 class Nav extends Component {
 
   state = {
@@ -25,7 +23,7 @@ class Nav extends Component {
             </div>
             <div className="vale-icon-wrapper">
               <Link to="/plans">
-                  <img className="vale-icon" src="./images/logo/color/logo-205x80.png" alt="vale-icon"/>
+                  <img className="vale-icon" src={require("../images/logo/color/logo-205x80.png")} alt="vale-icon"/>
               </Link>
             </div>
           </div>
@@ -46,13 +44,13 @@ class Nav extends Component {
           </>
           :
           <>
-              <img className="avatar" src="../images/default-avatar.png" alt="default-avatar"/>
+              <img className="avatar" src={require("../images/default-avatar.png")} alt="default-avatar"/>
               <p id="email-profile">{this.props.user.email}</p>
               {/* <p>Please sign up or log in!</p> */}
               <Link to="/user/onboarding">My profile</Link>
               <Link to="/user/onboarding">My plans</Link>
               <Link to="/user/onboarding">Attending</Link>
-              <button id="logout-btn" onClick={()=>{this.props.logout(); this.props.history.push("/welcome")}}>Log Out</button>
+              <button id="logout-btn" onClick={()=>{this.props.logout(); this.props.history.push("/welcome/#slide-cta")}}>Log Out</button>
           </>     
         }
       </div>

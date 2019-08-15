@@ -33,7 +33,7 @@ class Signup extends Component {
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password } = this.state
     return (
       <div className = "login-signup-wrapper">
         <form className = "form-login-signup" onSubmit={this.handleFormSubmit}>
@@ -49,7 +49,7 @@ class Signup extends Component {
           <input className = "btn btn-signup final" type="submit" value='Signup' />
         </form>
         <p>Already have an account?</p>
-        <Link to={'/login'}>Login!</Link>
+        <Link className='login-signup-link' to={'/login'}>Login!</Link>
       </div>
     )
   }

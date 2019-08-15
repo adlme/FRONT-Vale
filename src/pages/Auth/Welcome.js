@@ -44,9 +44,9 @@ function Welcome() {
         </div>
       </div>
       <div className="jumpers">
-        <Link href="#slide-1"></Link>
-        <Link href="#slide-2"></Link>
-        <Link href="#slide-cta"></Link>
+        <a href="#slide-1"></a>
+        <a href="#slide-2"></a>
+        <a href="#slide-cta"></a>
       </div>
     </div>
     </>

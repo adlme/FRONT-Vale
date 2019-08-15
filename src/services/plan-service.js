@@ -3,7 +3,8 @@ import axios from 'axios';
 class PlanService {
   constructor() {
     this.plansAPI = axios.create({
-      baseURL: 'http://localhost:4000'
+      baseURL: process.env.REACT_APP_BACKEND_DOMAIN,
+      withCredentials: true,
     })
   }
 
@@ -12,16 +13,45 @@ class PlanService {
       .then(({ data }) => data);
   }
 
+  getOnePlan(planID) {
+    return this.plansAPI.get(`/plans/${planID}`)
+      .then(({ data }) => data);
+  }
   
   addOnePlan(newPlan) {
     return this.plansAPI.post('/plans/create-plan', newPlan)
     .then(response => response)
   };
   
-  // getOnePlan(planID) {
-  //   return this.plans.get(`/plans/${planID}`)
-  //     .then(({ data }) => data);
-  // }
+  valePlan(planID) {
+    return this.plansAPI.put(`/plans/${planID}/vale`, planID)
+    .then(response => response)
+  };
+
+  leavePlan(planID) {
+    return this.plansAPI.put(`/plans/${planID}/leave`, planID)
+    .then(response => response)
+  };
+
+  deletePlan(planID) {
+    return this.plansAPI.put(`/plans/${planID}/delete`, planID)
+    .then(response => response)
+  };
+
+  
+  getAllCategories() {
+    return this.plansAPI.get('/plans/categories')
+      .then(({ data }) => data);
+  }
+
+  getOneCategory(category) {
+    return this.plansAPI.get(`/plans/category/${category}`)
+      .then(({ data }) => data);
+  }
+
+
+
+
 //   updateOneApp(id, updatedApp) {
 //     return this.plans.put(`/apps/${id}/update`, updatedApp)
 //     .then(response => response)

@@ -7,17 +7,17 @@ class LowNav extends Component {
         <div className="low-nav">
           <div className="secondary-button">
             <Link to="/plans/categories">
-              <img className="categories-icon" src="../images/navbar/white/categories-icon-white.png" alt=""/>
+              <img className="categories-icon" src={require("../images/navbar/white/categories-icon-white.png")} alt=""/>
             </Link>
           </div>
           <div className="create-button">
             <Link to="/plans/create">
-            <img className="create-icon" src="../images/navbar/white/create-icon-white.png" alt=""/>
+            <img className="create-icon" src={require("../images/navbar/white/create-icon-white.png")} alt=""/>
             </Link>
           </div>
           <div className="secondary-button">
             <Link to="/plans/map">
-              <img className="map-icon" src="../images/navbar/white/map-icon-white.png" alt=""/>
+              <img className="map-icon" src={require("../images/navbar/white/map-icon-white.png")} alt=""/>
             </Link>
           </div>
         </div>

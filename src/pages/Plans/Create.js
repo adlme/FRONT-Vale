@@ -64,7 +64,6 @@ class CreatePlan extends Component {
   
         <label htmlFor="date" className="inp">
             <span className="label">Date</span>
-            
             <input className="date-input" type="datetime-local" name="date" id="date" onChange={this.handleOnChange} value={date} placeholder="&nbsp;" required />
         </label>
   
