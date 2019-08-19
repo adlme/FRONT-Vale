@@ -41,7 +41,11 @@ class AuthProvider extends Component {
   }
 
   componentDidMount() {
-    authService.me()
+    this.updateUserData();
+  }
+
+  updateUserData = () => {
+    return authService.me()
     .then(user => {
       this.setState({
         user,
@@ -69,7 +73,8 @@ class AuthProvider extends Component {
                 isLoggedIn,
                 login: this.userLogin,
                 signup: this.userSignUp,
-                logout: this.userLogout
+                logout: this.userLogout,
+                updateUserData: this.updateUserData
               }
             }>
               {this.props.children}

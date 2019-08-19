@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import plansAPI from '../../services/plan-service';
+import userAPI from '../../services/user-service';
 import Moment from 'react-moment';
 import Nav from '../../components/Nav';
 import LowNav from '../../components/LowNav';
 
-
-class Plans extends Component {
+class JoinedPlans extends Component {
   state = {
-    plans: [],
+    plans: {plans: []},
     loading: true,
   }
 
   componentDidMount(){
-    plansAPI.getAllPlans()
-    .then(data => {
-      this.setState({plans: data.plans, loading: false})
-    })
+    userAPI.getJoinedPlans()
+    .then(plans => this.setState({plans,loading: false,}),
+    
+    )
+
     .catch(error => console.log(error))
   }
 
   render() {
-    console.log(this.state.plans)
+  console.log('this are the joined plans',this.state.plans.plans)
     return (
       <div>
         <Nav />
         <section className="plans-wrapper">
-          <h1>Plans</h1>
+          <h1>Joined Plans</h1>
           <section className="plans-list"> 
-            {!this.state.loading && this.state.plans.map((plan) => {
+            {this.state.plans.plans.length > 0 ? 
+            !this.state.loading && this.state.plans.plans.map((plan) => {
               return <div key={plan._id} className={`card ${plan.category}`}>
                       <Link to={`/plans/${plan._id}`}>
                         <div className="card-grid">
@@ -47,7 +48,10 @@ class Plans extends Component {
                         </div>
                       </Link>
                     </div>              
-              })}   
+              })
+              : <h2 id="no-plans">No plans yet...</h2>
+              }
+            
             </section>
         </section>
         <LowNav/>
@@ -56,4 +60,4 @@ class Plans extends Component {
   }
 }
 
-export default Plans;
+export default JoinedPlans;

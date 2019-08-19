@@ -26,6 +26,11 @@ class Nav extends Component {
                   <img className="vale-icon" src={require("../images/logo/color/logo-205x80.png")} alt="vale-icon"/>
               </Link>
             </div>
+            <div className="contacts-icon-wrapper">
+              <Link to="/users">
+                  <img className="vale-icon" src="../images/users.png" alt="users-icon"/>
+              </Link>
+            </div>
           </div>
         </nav>
 
@@ -34,9 +39,8 @@ class Nav extends Component {
           <button className="closebtn" onClick={this.toggleSidebar}>&times;</button>
           {this.props.user.name ?
           <>
-            <img className="avatar" src="{{currentUser.image}}" alt="User-avatar" />
+            <img className="avatar" src={this.props.user.image} alt="User-avatar" />
             <h2 id="username-profile">{this.props.user.name}</h2>
-            <p id="email-profile">{this.props.user.email}</p>
             <Link to="/user/profile">My profile</Link>
             <Link to="/user/created-plans">My plans</Link>
             <Link to="/user/joined-plans">Attending</Link>

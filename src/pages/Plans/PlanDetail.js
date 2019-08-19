@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import plansAPI from '../../services/plan-service';
 import Moment from 'react-moment';
-import Nav from '../../components/Nav';
-import LowNav from '../../components/LowNav';
+import BackNav from '../../components/BackNav';
 
 class Plan extends Component {
   state = {
     plan: {},
+    user: {},
     isJoined: false,
     isOwner: false,
     loading: true,
@@ -16,8 +16,9 @@ class Plan extends Component {
   componentDidMount(){
     plansAPI.getOnePlan(this.props.match.params.id)
     .then((data) => {
-      console.log(data);
-      this.setState({plan: data.plan, isJoined: data.isJoined, isOwner: data.isOwner, loading: false,})
+      console.log('PLAN DETAIL',data);
+      this.setState({plan: data.plan, user: data.fullUser, isJoined: data.isJoined, isOwner: data.isOwner, loading: false,})
+      console.log(this.state.user.status)
     })
     .catch(error => console.log(error))
   }
@@ -33,11 +34,11 @@ class Plan extends Component {
   }
 
   handleSubmitLeave = (event) => {
+ 
     event.preventDefault();
     console.log(this.props.match.params.id);
     plansAPI.leavePlan(this.props.match.params.id)
     .then(({data}) => {
-      console.log('hbsbysbybsyysbybsyby',data)
       this.setState({ plan: data.plan, isJoined: false
       })
     })
@@ -45,11 +46,11 @@ class Plan extends Component {
   }
 
   handleSubmitDelete = (event) => {
+
     event.preventDefault();
     console.log(this.props.match.params.id);
     plansAPI.leavePlan(this.props.match.params.id)
     .then(({data}) => {
-      console.log('hbsbysbybsyysbybsyby',data)
       this.setState({ plan: data.plan, isOwner: false
       })
     })
@@ -59,8 +60,9 @@ class Plan extends Component {
 
   render() {
     const {plan} = this.state
-    console.log('heyyy',this.state.plan)
     return (
+    <>
+    <BackNav />
     <div className="form-wrapper" id="plan-detail">
         <div className="card-grid" id="plan-detail">
           <h3 className="title">{plan.title}</h3>
@@ -78,7 +80,21 @@ class Plan extends Component {
         </div>
 
       
-      {!plan.isOwner ? 
+      {this.state.user.status==='created' ? 
+          <form>
+            <div className="form-buttons" id="signup">
+
+              <button className="btn btn-signup" type="submit">
+                              <Link to='/user/onboarding'>      
+                Vale!
+                              </Link>
+
+                </button>
+            </div>
+          </form>   
+      :
+        
+        !plan.isOwner ? 
         (!this.state.isJoined ?
           <form onSubmit={this.handleSubmitVale}>
             <div className="form-buttons" id="signup">
@@ -98,10 +114,8 @@ class Plan extends Component {
             </div>
           </form> 
         }
-
-
-      <a href="/plans" id="back-detail">Back</a>
     </div>
+    </>
     )}
 }
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import  {Redirect} from 'react-router-dom';
 import plansAPI from '../../services/plan-service';
+import BackNav from '../../components/BackNav'
 
 
 class CreatePlan extends Component {
@@ -9,7 +10,7 @@ class CreatePlan extends Component {
     title: '',
     description: '',
     date: '',
-    category: 'null',
+    category: '',
     // location: {
     //   type: "Point",
     //   coordinates: [
@@ -18,6 +19,7 @@ class CreatePlan extends Component {
     //   ]
     // },
     redirect: false,
+    message: '',
   }
 
   handleOnChange = (event) => {
@@ -28,26 +30,32 @@ class CreatePlan extends Component {
   }
 
   handleSubmit = (event) => {
-    const {title, description, date, category} = this.state;
+    const {title, description, date, category, message} = this.state;
     event.preventDefault();
-    plansAPI.addOnePlan({
-      title,
-      description,
-      date,
-      category,
-      // location,
-    })
-    .then(() => {
-      this.setState({
-        redirect: true,
+      plansAPI.addOnePlan({
+        title,
+        description,
+        date,
+        category,
+        // location,
       })
-    })
-    .catch(error => console.log(error))
-  }
+      .then(({data}) => {
+        data.message ? 
+        this.setState({
+          message: data.message,
+        }) :
+        this.setState({
+          redirect: true,
+        })
+      })
+      .catch(error => console.log(error))
+    }
+
   render() {
     const {title, description, date, category, redirect} = this.state;
     return (
       <>
+        <BackNav/>
         <div className="form-with-title-wrapper">
         <h1>Create your plan</h1>
         <form className = "form" onSubmit={this.handleSubmit}>
@@ -68,25 +76,26 @@ class CreatePlan extends Component {
         </label>
   
   
-        <label htmlFor="category">
-        <span>Category</span>
-          <select name="category" onChange={this.handleOnChange} value={category} >
-            <option value="null">- - Select one category - -</option>
-            <option value="Culture">Culture</option>
-            <option value="Drinks">Drinks</option>
-            <option value="Food">Food</option>
-            <option value="Party">Party</option>
-            <option value="Shopping">Shopping</option>
-            <option value="Sports">Sports</option>
-            <option value="Travel">Travel</option>
-            <option value="Volunteering">Volunteering</option>
-            <option value="Others">Others</option>
-          </select>
-        </label>
+        <label htmlFor="category">Category</label>
+        <select defaultValue={this.state.category} name="category" onChange={this.handleOnChange} value={category} >
+          <option disabled={true} value='' >Choose category</option>  
+          <option value="Culture">Culture</option>
+          <option value="Drinks">Drinks</option>
+          <option value="Food">Food</option>
+          <option value="Party">Party</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Sports">Sports</option>
+          <option value="Travel">Travel</option>
+          <option value="Volunteering">Volunteering</option>
+          <option value="Others">Others</option>
+        </select>
+        {this.state.message ? 
+        <p id='error'>{this.state.message}</p>
+        : null}
+ 
      
         <div className="form-buttons">
-          <Link to="/plans" type="submit" className="cancel-btn">Back</Link>
-          <button type="submit" className="submit-btn">Create</button>
+          <button type="submit" className="btn btn-signup">Create</button>
         </div>
         </form>
         {redirect ? <Redirect to="/plans"/> : null}

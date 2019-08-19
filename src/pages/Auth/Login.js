@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import auth from '../../services/auth-service';
+
 import withAuth from '../../components/withAuth';
 
 class Login extends Component {

@@ -13,7 +13,7 @@ const AnonRoute = (props) => {
         {...rest}
       /> : <Redirect to='/plans' />}
     </>
-   
+  
   );
 }
 export default withAuth(AnonRoute);
