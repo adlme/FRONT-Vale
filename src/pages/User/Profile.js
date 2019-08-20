@@ -13,7 +13,6 @@ class CreatedPlans extends Component {
   componentDidMount(){
     userAPI.getUserProfile()
     .then((data) => {
-      console.log('user data ',data);
       this.setState({user: data ,loading: false})
     })
     .catch(error => console.log(error))
@@ -21,7 +20,6 @@ class CreatedPlans extends Component {
 
   render() {
     const {user} = this.state
-    console.log(user)
     return (
       <div>
         <BackNav />

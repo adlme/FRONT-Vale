@@ -21,8 +21,23 @@ import JoinedPlans from './pages/User/JoinedPlans'
 import Profile from './pages/User/Profile'
 import ProfileEdit from './pages/User/ProfileEdit'
 import UsersDetail from './pages/Users/UsersDetail';
+import FileUploadComponent from './components/FileUploadComponent';
 
 import './App.css';
+
+// Firebase config
+
+import firebase from "firebase";
+ 
+const config = {
+  apiKey: "AIzaSyDaQ6kmgJ7rq932eNT6iXDzje2ISL8mJXs",
+  authDomain: "vale-app-eabd3.firebaseapp.com",
+  storageBucket: "gs://vale-app-eabd3.appspot.com/"
+};
+firebase.initializeApp(config);
+
+
+
 
 class App extends Component {
   render() {
@@ -47,6 +62,7 @@ class App extends Component {
                 <PrivateRoute exact path="/plans/categories" component={Categories} />
                 <PrivateRoute exact path="/plans/category/:id" component={Category} />
                 <PrivateRoute path="/plans/:id" component={PlanDetail} />
+                <PrivateRoute path="/upload" component={FileUploadComponent} />
                 <Route component={NotFound} />
               </Switch>
           </main>

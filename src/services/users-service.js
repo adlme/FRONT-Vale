@@ -14,7 +14,7 @@ class UsersService {
   }
 
   getOneUser(userID) {
-    return this.usersAPI.get(`/plans/${userID}`)
+    return this.usersAPI.get(`/users/${userID}`)
       .then(({ data }) => data);
   }
 }

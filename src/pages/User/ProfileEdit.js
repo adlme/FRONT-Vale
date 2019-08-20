@@ -33,8 +33,6 @@ class Onboarding extends Component {
     userAPI.getUserProfile()
     .then((data) => {
       const interests = data.interests
-      console.log('user data ', data);
-      console.log('interests', interests);
       interests.forEach((interest)=>{
         if(interest === 'Culture'){
           this.setState({
@@ -109,7 +107,6 @@ class Onboarding extends Component {
     .then(() => {
       this.props.updateUserData()
       .then((user) => {
-        console.log(user)
         this.setState({
           redirect: true,
         })

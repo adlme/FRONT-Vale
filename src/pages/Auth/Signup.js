@@ -17,8 +17,7 @@ class Signup extends Component {
     const password = this.state.password;
 
     this.props.signup({ email, password })
-      .then( (user) => {
-        console.log(user)
+      .then( () => {
         this.setState({
             email: '',
             password: '',
@@ -38,7 +37,7 @@ class Signup extends Component {
       <div className = "login-signup-wrapper">
         <form className = "form-login-signup" onSubmit={this.handleFormSubmit}>
           <label htmlFor="email" className="inp">
-              <input type="text" name="email" id="email" placeholder="&nbsp;"  value={email} onChange={this.handleChange} required />
+              <input type="email" name="email" id="email" placeholder="&nbsp;"  value={email} onChange={this.handleChange} required />
               <span className="label">Email</span>
           </label>
           <label htmlFor="password" className="inp">

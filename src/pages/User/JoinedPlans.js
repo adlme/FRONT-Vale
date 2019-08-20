@@ -21,7 +21,6 @@ class JoinedPlans extends Component {
   }
 
   render() {
-  console.log('this are the joined plans',this.state.plans.plans)
     return (
       <div>
         <Nav />

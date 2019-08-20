@@ -7,6 +7,7 @@ import BackNav from '../../components/BackNav';
 class Plan extends Component {
   state = {
     plan: {},
+    plansWithCounter: {},
     user: {},
     isJoined: false,
     isOwner: false,
@@ -16,9 +17,8 @@ class Plan extends Component {
   componentDidMount(){
     plansAPI.getOnePlan(this.props.match.params.id)
     .then((data) => {
-      console.log('PLAN DETAIL',data);
-      this.setState({plan: data.plan, user: data.fullUser, isJoined: data.isJoined, isOwner: data.isOwner, loading: false,})
-      console.log(this.state.user.status)
+      // console.log(data)
+      this.setState({plan: data.plan, plansWithCounter: data.plansWithCounter, user: data.fullUser, isJoined: data.isJoined, isOwner: data.isOwner, loading: false,})
     })
     .catch(error => console.log(error))
   }
@@ -36,7 +36,6 @@ class Plan extends Component {
   handleSubmitLeave = (event) => {
  
     event.preventDefault();
-    console.log(this.props.match.params.id);
     plansAPI.leavePlan(this.props.match.params.id)
     .then(({data}) => {
       this.setState({ plan: data.plan, isJoined: false
@@ -48,7 +47,6 @@ class Plan extends Component {
   handleSubmitDelete = (event) => {
 
     event.preventDefault();
-    console.log(this.props.match.params.id);
     plansAPI.leavePlan(this.props.match.params.id)
     .then(({data}) => {
       this.setState({ plan: data.plan, isOwner: false
@@ -59,10 +57,12 @@ class Plan extends Component {
 
 
   render() {
-    const {plan} = this.state
+    const {plan, plansWithCounter} = this.state
     return (
     <>
     <BackNav />
+    
+    
     <div className="form-wrapper" id="plan-detail">
         <div className="card-grid" id="plan-detail">
           <h3 className="title">{plan.title}</h3>
@@ -76,9 +76,10 @@ class Plan extends Component {
           </Moment>
           </p>
           <p className="category">{plan.category}</p>
-          <p className="attendees">&#128101;{plan.counter}</p>
+    {this.state.loading ? null : 
+          <p className="attendees">&#128101; {plansWithCounter[0].counter}</p>
+        }
         </div>
-
       
       {this.state.user.status==='created' ? 
           <form>

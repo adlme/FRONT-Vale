@@ -16,7 +16,6 @@ class Users extends Component {
     usersAPI.getAllUsers()
     .then(data => {
       this.setState({users: data, loading: false})
-      console.log('this is the data', this.state.users)
     })
     .catch(error => console.log(error))
   }

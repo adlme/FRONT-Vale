@@ -9,6 +9,10 @@ class BackNav extends Component {
     isOpen: false 
   }
 
+  goBack = () => {
+    this.props.history.goBack()
+  }
+
   render() {  
     return (
         <>
@@ -16,9 +20,7 @@ class BackNav extends Component {
           <div className="grid-container">
             
               <div className="back-nav-wrapper">
-                  <Link to="/plans">
-                    <span>&times;</span>
-                  </Link>
+                    <span onClick={this.goBack}>&times;</span>
               </div>
 
             <div className="vale-icon-wrapper">

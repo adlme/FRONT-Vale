@@ -4,6 +4,7 @@ import  {Redirect} from 'react-router-dom';
 import userAPI from '../../services/user-service';
 import BackNav from '../../components/BackNav';
 import withAuth from '../../components/withAuth';
+import FileUploadComponent from '../../components/FileUploadComponent';
 
 
 class Onboarding extends Component {
@@ -24,6 +25,7 @@ class Onboarding extends Component {
     phoneNum: '',
     profilePhoto: '',
     redirect: false,
+    avatarURL: '',
   }
 
   handleOnChange = (event) => {
@@ -36,25 +38,24 @@ class Onboarding extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const {name, gender, birthdate, phoneNum, profilePhoto, redirect, ...interestsState} = this.state;
+    const {name, gender, birthdate, phoneNum, profilePhoto, redirect, avatarURL, ...interestsState} = this.state;
     const interests = [];
     for (const key in interestsState) {
       if(interestsState[key] === true){
         interests.push(key)
       }
     }
-    console.log(interests)
     userAPI.onboarding({
       name,
       gender,
       birthdate,
       interests,
-      phoneNum
+      phoneNum,
+      avatarURL,
     })
     .then(() => {
       this.props.updateUserData()
       .then((user) => {
-        console.log(user)
         this.setState({
           redirect: true,
         })
@@ -62,6 +63,13 @@ class Onboarding extends Component {
     })
     .catch(error => console.log(error))
   }
+
+  avatarUpload = (url) => {
+    this.setState({
+      avatarURL: url
+    })
+  }
+
   render() {
     const {name, description, gender, birthdate, phoneNum, redirect} = this.state;
     return (
@@ -69,7 +77,7 @@ class Onboarding extends Component {
         <BackNav />
         <form className="form editProfile" onSubmit={this.handleSubmit}>
 
-          <h1 id="more-details">Just a few more details and you will be ready to go!</h1>
+          <h1 id="more-details">Just a few more details and you'll be ready to go!</h1>
 
           <label htmlFor="name" className="inp">
               <input type="text" name="name" id="name" placeholder="&nbsp;" required  onChange={this.handleOnChange} value={name}/>
@@ -115,9 +123,11 @@ class Onboarding extends Component {
             <span className="label">Phone number</span>
           </label>
 
+          <FileUploadComponent url={this.avatarUpload}/>
+
           {/* <label htmlFor="profile-photo">Profile picture</label>
             <input className="profile-photo" type="file" name="photo" id="profile-photo" /> */}
-          <button className = "form-btn" type="submit">Save Profile</button>
+          <button className = "btn btn-signup" type="submit" id="save">Save</button>
         </form>
         {redirect ? <Redirect to="/plans"/> : null}
       </>

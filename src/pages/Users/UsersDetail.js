@@ -12,21 +12,20 @@ class UsersDetail extends Component {
 
   componentDidMount(){
     usersAPI.getOneUser(this.props.match.params.id)
-    .then((data) => {
-      console.log('User DETAIL',data);
-      this.setState({user: data, loading: false,})
-      console.log(this.state.user)
+    .then((user) => {
+      this.setState({user, loading: false,})
     })
     .catch(error => console.log(error))
   }
 
   render() {
     const {user} = this.state
+    console.log('user info',user)
     return (
     <>
     <BackNav />
-    <div className="form-wrapper" id="plan-detail">
-        <div className="card-grid-users" id="plan-detail">
+    <div className="users-wrapper" id="users-detail">
+        <div className="card-grid-users">
         <h3 className="user-name">{user.name}</h3>
           <img className="avatar users-image" src={user.image} alt='user'/>
           <p id="user-description">{`" ${user.description} "`}</p>

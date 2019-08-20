@@ -49,18 +49,12 @@ class PlanService {
       .then(({ data }) => data);
   }
 
+  searchPlans(planSearch) {
+    return this.plansAPI.get(`/plans/search-plans?planSearch=${planSearch}`)
+      .then(({ data }) => data);
+  }
 
 
-
-//   updateOneApp(id, updatedApp) {
-//     return this.plans.put(`/apps/${id}/update`, updatedApp)
-//     .then(response => response)
-//   };
-
-//   deleteOneApp(id) {
-//     return this.plans.delete(`/apps/${id}/delete`)
-//     .then(response => response);
-//   };
 }
 
 const plansAPI = new PlanService();

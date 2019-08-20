@@ -12,6 +12,8 @@ class Nav extends Component {
     this.setState({ isOpen: !this.state.isOpen})
   }
 
+
+
   render() {  
     const { isOpen } = this.state;
     return (
@@ -26,10 +28,19 @@ class Nav extends Component {
                   <img className="vale-icon" src={require("../images/logo/color/logo-205x80.png")} alt="vale-icon"/>
               </Link>
             </div>
+            {/* <div className="search-icon-wrapper">
+                  <img className="search-icon" src="../images/search-icon-gray.png" alt="search-icon"/>
+            </div> */}
             <div className="contacts-icon-wrapper">
-              <Link to="/users">
-                  <img className="vale-icon" src="../images/users.png" alt="users-icon"/>
-              </Link>
+              {this.props.match.path === '/plans' ? 
+                <Link to="/users">
+                    <img className="vale-icon" src="../images/users.png" alt="users-icon"/>
+                </Link>
+              :
+                <Link to="/plans">
+                  <img className="vale-icon" src="../images/plans-green.png" alt="plans-icon"/>
+                </Link>  
+              }
             </div>
           </div>
         </nav>

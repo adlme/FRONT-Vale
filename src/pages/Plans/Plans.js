@@ -10,6 +10,21 @@ class Plans extends Component {
   state = {
     plans: [],
     loading: true,
+    searchOpen: false,
+  }
+
+  searchPlan = (event) => {
+    this.setState({
+      loading: true
+    })
+    plansAPI.searchPlans(event.target.value)
+    .then(data => {
+      this.setState({plans: data.plansWithCounter, loading: false})
+    })
+  }
+
+  toggleSearch = (e) => {
+    this.setState({ searchOpen: !this.state.searchOpen})
   }
 
   componentDidMount(){
@@ -21,15 +36,18 @@ class Plans extends Component {
   }
 
   render() {
-    console.log(this.state.plans)
     return (
       <div>
         <Nav />
         <section className="plans-wrapper">
           <h1>Plans</h1>
           <section className="plans-list"> 
+            <input className={`search-bar ${ this.state.searchOpen ? "search-bar-open" : "search-bar-close"}`} type="text" onChange={this.searchPlan} />
+            <div className="search-icon-wrapper">
+                  <img onClick={this.toggleSearch}  className="search-icon" src="../images/search-icon-radio.png" alt="search-icon"/>
+            </div>
             {!this.state.loading && this.state.plans.map((plan) => {
-              return <div key={plan._id} className={`card ${plan.category}`}>
+              return <div key={plan._id} className={`card ${plan.sponsored}`}>
                       <Link to={`/plans/${plan._id}`}>
                         <div className="card-grid">
                           <h3 className="title">{plan.title}</h3>
@@ -43,7 +61,7 @@ class Plans extends Component {
                           </Moment>
                           </p>
                           <p className="category">{plan.category}</p>
-                          <p className="attendees">&#128101;{plan.counter}</p>
+                          <p className="attendees">&#128101; {plan.counter}</p>
                         </div>
                       </Link>
                     </div>              

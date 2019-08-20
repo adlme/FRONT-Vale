@@ -18,7 +18,7 @@ body {
 
 /* ---- variables ---- */
 
-:root {
+:root{
   --colorPrimary: #6bbc57;
   --colorSecondary: white;
   --colorTertiary: #BA65B6;
@@ -128,7 +128,6 @@ main{
   border-radius: 50%;
   display: inline-block;
 }
-
 h1{
   margin: 0px 25px;
   padding-top: 30px;
@@ -597,6 +596,11 @@ p {
   filter: opacity(0.7)
 }
 
+
+nav .grid-container{
+  grid-template-columns: 2fr 8fr .5fr;
+}
+
 .grid-container {
   font-size: 25px;
   color: rgb(127, 187, 100);
@@ -708,8 +712,8 @@ p {
 }
 
 .contacts-icon-wrapper{
-  grid-column-start: 5;
-  grid-column-end: 6;
+  grid-column-start: 4;
+  grid-column-end: 5;
   justify-self: center;
   align-self: center;
   padding-top: 6px;
@@ -717,6 +721,20 @@ p {
 
 .contacts-icon-wrapper img{
   height: 30px;
+}
+
+
+.search-icon-wrapper{
+  width: 100vw;
+  position: fixed;
+  left: 87%;
+  top: 10%;
+}
+
+.search-icon-wrapper img{
+  height: 30px;
+  box-shadow: 0px 0px 5px 0px rgba(183, 179, 179, 0.75);
+  border-radius: 50%;
 }
 
 .form textarea{
@@ -1294,7 +1312,7 @@ display:none;
 #user-description{
   grid-area: description;
   font-size: 20px;
-  color: var(--colorprimary);
+  color: var(--colorprimary) !important;
   font-style: italic;
   font-weight: bold;
 }
@@ -1303,24 +1321,70 @@ display:none;
   grid-area: proximity
 }
 
-.users-list a{
+.card-grid-users a{
   text-decoration: none;
 }
 
-.users-list h3{
+.card-grid-users h3{
   color: var(--colorPrimary);
   margin: 0;
   text-align: center;
 }
 
-.users-list p{
-  color: var(--colorPrimary);
+.card-grid-users p{
+  color: grey;
   margin: 0;
   text-align: center;
 }
 
-.users-list time{
-  color: var(--colorPrimary);
+.card-grid-users time{
+  color: grey;
   margin: 0;
   text-align: center;
+}
+
+#users-detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 0;
+  padding-top: 14%;
+}
+
+.upload-photo{
+  padding-top: 5%;
+  margin: 0 auto;
+}
+
+.search-bar{
+  position: fixed;
+  right: 17%;
+  top: 10.4%;
+  border-radius: 20px;
+  border: 1px solid lightgray;
+  height: 4vh;
+  padding: 0 10px;
+  color: var(--colorprimary);
+  font-size: 18px;
+  font-family: var(--fontForm);
+
+}
+
+.search-bar:focus{
+  outline: var(--colorPrimary) 
+}
+
+.search-bar-open{
+  width: 49vw;
+  transform-origin: right;
+  transition: all 0.5s;
+}
+
+.search-bar-close{
+  transform-origin: right;
+  width: 0;
+  transition: all 0.5s;
+  padding: 0;
+  border-color:transparent;
+  background-color: transparent;
 }
