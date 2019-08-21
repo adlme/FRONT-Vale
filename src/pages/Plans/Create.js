@@ -61,13 +61,13 @@ class CreatePlan extends Component {
           <form className = "form" onSubmit={this.handleSubmit}>
             
             <label htmlFor="title" className="inp">
-              <input type="text" name="title" id="title" onChange={this.handleOnChange} value={title} minLength="8" maxLength="40" placeholder="&nbsp;" required />
+              <input type="text" name="title" id="title" onChange={this.handleOnChange} value={title} minLength="8" maxLength="60" placeholder="&nbsp;" required />
               <span className="label">Title</span>
             </label>
     
           <label htmlFor="description" className="inp">
             <input type="text" name="description" id="description-create" onChange={this.handleOnChange} value={description} minLength="8" maxLength="50" placeholder="&nbsp;" required />
-            <span className="label">Brief description</span>
+            <span className="label">Short description</span>
           </label>
     
           <label htmlFor="date" className="inp">

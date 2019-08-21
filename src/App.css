@@ -797,6 +797,10 @@ nav .grid-container#back-nav{
   align-items: center;
 }
 
+.sidebar-container a{
+  box-shadow: none;
+}
+
 .avatar{
   width:200px;
   height:200px;

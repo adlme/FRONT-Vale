@@ -12,13 +12,11 @@ class CreatedPlans extends Component {
 
   componentDidMount(){
     userAPI.getCreatedPlans()
-    .then(plans => this.setState({plans,loading: false,}))
+    .then(data => this.setState({plans: data.plans,loading: false,}))
 
     .catch(error => console.log(error))
   }
-
   render() {
-    console.log(this.state.plans)
     return (
       <div>
         <BackNav />
@@ -26,7 +24,7 @@ class CreatedPlans extends Component {
           <h1>Created plans</h1>
           <section className="plans-list"> 
             {this.state.plans.length > 0 ? 
-            !this.state.loading && this.state.plans.plans.map((plan) => {
+            !this.state.loading && this.state.plans.map((plan) => {
               return <div key={plan._id} className={`card ${plan.category}`}>
                       <Link to={`/plans/${plan._id}`}>
                         <div className="card-grid">

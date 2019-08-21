@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 import Signup from './pages/Auth/Signup';
 import Login from './pages/Auth/Login';
@@ -48,7 +48,9 @@ class App extends Component {
                 <AnonRoute  path="/login" component={Login} />
                 <PrivateRoute exact path="/user/onboarding" component={Onboarding} />
                 <OnboardedRoute exact path="/user/created-plans" component={CreatedPlans} />
-                <PrivateRoute exact path="/" component={Plans} />
+                <PrivateRoute exact path="/" render={() => {
+                  return <Redirect to='/plans' />
+                }} />
                 <PrivateRoute exact path="/plans" component={Plans} />
                 <PrivateRoute exact path="/users" component={Users} />
                 <PrivateRoute exact path="/users/:id" component={UsersDetail} />
