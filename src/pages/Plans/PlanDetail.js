@@ -91,15 +91,14 @@ class Plan extends Component {
         {this.state.loading ? null : 
             <div className="plan-detail-joiner-info">
            { planJoinedUsers.map(joiner => (  
-              <img className="avatar users-image" id="plan-detail-joiner-avatar" src={joiner.image} alt="user"/>
+             <Link to={`/users/${joiner._id}`}>
+                <img className="avatar users-image" id="plan-detail-joiner-avatar" src={joiner.image} alt="user"/>
+             </Link>
             )) }
             </div>
         }
 
     </div>
-
-
-
 
       {this.state.user.status==='created' ? 
           <form>

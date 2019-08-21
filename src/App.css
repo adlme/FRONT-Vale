@@ -1465,3 +1465,57 @@ textarea#description{
 .upload-photo label{
   border: 1px solid var(--colorPrimary);
 }
+
+.users-detail-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "image description description"
+  "name date proximity";
+  margin: 0 20px;
+  align-items: center;
+  grid-column-gap: 15px;
+  grid-row-gap: 10px;
+}
+.users-detail-grid .users-image{
+  grid-area: image;
+  margin: 0;
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--colorPrimary);
+  margin: 0 auto;
+}
+.users-detail-grid time{
+  grid-area: date;
+  margin: 0;
+  font-size: 25px;
+  text-align: center;
+  color: grey;
+}
+
+.users-detail-grid #user-proximity{
+  grid-area: proximity;
+  margin: 0;
+  font-size: 15px;
+  text-align: center;
+  color: grey;
+}
+
+.users-detail-grid .user-name{
+  grid-area: name;
+  font-size: 30px;
+  color: #6bbc57 !important;
+  margin: 0;
+  text-align: center;
+}
+
+.users-detail-grid #user-description{
+  grid-area: description;
+  font-size: 18px;
+  color: #6bbc57 !important;
+  font-style: italic;
+  font-weight: bold;
+  text-align: left;
+}
+

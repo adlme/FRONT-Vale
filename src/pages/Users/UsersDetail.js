@@ -25,7 +25,7 @@ class UsersDetail extends Component {
     <>
     <BackNav />
     <div className="users-wrapper" id="users-detail">
-        <div className="card-grid-users">
+        <div className="users-detail-grid">
         <h3 className="user-name">{user.name}</h3>
           <img className="avatar users-image" src={user.image} alt='user'/>
           <p id="user-description">{`" ${user.description} "`}</p>
