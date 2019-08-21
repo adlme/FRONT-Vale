@@ -17,10 +17,10 @@ class BackNav extends Component {
     return (
         <>
         <nav className="nav-bar">
-          <div className="grid-container">
+          <div className="grid-container" id="back-nav">
             
               <div className="back-nav-wrapper">
-                    <span onClick={this.goBack}>&times;</span>
+                <img onClick={this.goBack} className="back-icon" src={require("../images/back-icon-green.png")} alt="vale-icon"/>
               </div>
 
             <div className="vale-icon-wrapper">

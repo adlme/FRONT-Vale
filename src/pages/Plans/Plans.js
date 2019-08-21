@@ -19,7 +19,7 @@ class Plans extends Component {
     })
     plansAPI.searchPlans(event.target.value)
     .then(data => {
-      this.setState({plans: data.plansWithCounter, loading: false})
+      this.setState({plans: data.plansWithCounter.reverse(), loading: false})
     })
   }
 
@@ -30,7 +30,7 @@ class Plans extends Component {
   componentDidMount(){
     plansAPI.getAllPlans()
     .then(data => {
-      this.setState({plans: data.plans, loading: false})
+      this.setState({plans: data.plans.reverse(), loading: false})
     })
     .catch(error => console.log(error))
   }
@@ -47,7 +47,7 @@ class Plans extends Component {
                   <img onClick={this.toggleSearch}  className="search-icon" src="../images/search-icon-radio.png" alt="search-icon"/>
             </div>
             {!this.state.loading && this.state.plans.map((plan) => {
-              return <div key={plan._id} className={`card ${plan.sponsored}`}>
+              return <div key={plan._id} className={`card ${plan.category}`}>
                       <Link to={`/plans/${plan._id}`}>
                         <div className="card-grid">
                           <h3 className="title">{plan.title}</h3>

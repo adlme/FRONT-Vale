@@ -16,6 +16,10 @@ body {
   height: 100%; */
 }
 
+a{
+  text-decoration: none;
+}
+
 /* ---- variables ---- */
 
 :root{
@@ -23,6 +27,7 @@ body {
   --colorSecondary: white;
   --colorTertiary: #BA65B6;
   --colorTertiaryShadow: #6E256A;
+  --colorLightGrey: #bcbcbc;
   --colorGrayLogo: rgb(138,138,138);
   --colorText: #222222;
   --paddingButton: 0.7em 3em;
@@ -600,6 +605,9 @@ p {
 nav .grid-container{
   grid-template-columns: 2fr 8fr .5fr;
 }
+nav .grid-container#back-nav{
+  grid-template-columns: 1fr 20fr 1fr;
+}
 
 .grid-container {
   font-size: 25px;
@@ -690,14 +698,14 @@ nav .grid-container{
   grid-column-end: 2;
   justify-self: left;
   align-self: center;
+  padding-top: 10px;
 }
 
-.back-nav-wrapper a{
-  color: gray;
-  list-style: none;
-  text-decoration: none;
-  font-size: 25px;
+.back-nav-wrapper img{
+  height: 30px;
 }
+
+
 
 .vale-icon-wrapper{
   grid-column-start: 2;
@@ -710,6 +718,7 @@ nav .grid-container{
 .vale-icon-wrapper img{
   height: 30px;
 }
+
 
 .contacts-icon-wrapper{
   grid-column-start: 4;
@@ -775,6 +784,7 @@ nav .grid-container{
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+  color: var(--colorLightGrey)
 }
 
 .sidebar-container {
@@ -1019,7 +1029,7 @@ display:none;
   font-family: var(--sixthFont);
   font-size: 30px;
   text-align: center;
-  margin-top: 20%; 
+  margin-top: 10%; 
   
 }
 
@@ -1061,6 +1071,7 @@ display:none;
 
 .card-grid#plan-detail .title{
   font-size: 40px;
+  padding-bottom: 2vh;
 }
 
 .card-grid#plan-detail .date{
@@ -1071,6 +1082,7 @@ display:none;
 .card-grid#plan-detail .description{
   color: grey;
   font-size: 18px;
+  padding-bottom: 4vh;
 }
 
 .card-grid#plan-detail .category{
@@ -1175,8 +1187,10 @@ display:none;
 
 #no-plans{
   position: absolute;
-  right: 50%;
-  color: grey;
+  right: 34%;
+  color: #b9b9b9;
+  position: absolute;
+  bottom: 43%;
 }
 
 #username-profile{
@@ -1189,7 +1203,8 @@ display:none;
 }
 
 #logout-btn{
-  font-size: 15px
+  font-size: 15px;
+  color: var(--colorGrayLogo)
 }
 
 #more-details{
@@ -1302,7 +1317,6 @@ display:none;
   height: 80px;
   border: 2px solid var(--colorPrimary);
   margin: 0 auto;
-  margin-top: 10px;
 }
 
 .user-name{
@@ -1311,10 +1325,11 @@ display:none;
 
 #user-description{
   grid-area: description;
-  font-size: 20px;
+  font-size: 15px;
   color: var(--colorprimary) !important;
   font-style: italic;
   font-weight: bold;
+  text-align: left;
 }
 
 #user-proximity{
@@ -1361,7 +1376,7 @@ display:none;
   right: 17%;
   top: 10.4%;
   border-radius: 20px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--colorPrimary);
   height: 4vh;
   padding: 0 10px;
   color: var(--colorprimary);
@@ -1387,4 +1402,27 @@ display:none;
   padding: 0;
   border-color:transparent;
   background-color: transparent;
+}
+
+#unread-messages{
+  width: 25px;
+  /* padding-right: 10px; */
+  /* vertical-align: -webkit-baseline-middle; */
+  position: absolute;
+  left: -34px;
+  bottom: 18px;
+}
+
+#chats{
+  position: relative
+}
+
+.mode{
+  text-decoration: none;
+  color: var(--colorLightGrey);
+  
+}
+
+textarea#description{
+  height: 40px
 }

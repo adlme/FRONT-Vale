@@ -84,7 +84,7 @@ class Onboarding extends Component {
               <span className="label">Name</span>
           </label>
           <label htmlFor="description" className="inp">
-              <input type="text" name="description" id="name" placeholder="&nbsp;" required  onChange={this.handleOnChange} value={description}/>
+              <input maxlength="90" type="text" name="description" id="name" placeholder="&nbsp;" required  onChange={this.handleOnChange} value={description}/>
               <span className="label">Description</span>
           </label>
 

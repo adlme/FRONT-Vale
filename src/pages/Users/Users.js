@@ -33,7 +33,7 @@ class Users extends Component {
                         <div className="card-grid-users">
                           <h3 className="user-name">{user.name}</h3>
                           <img className="avatar users-image" src={user.image} alt='user'/>
-                          <p id="user-description">{`" ${user.description} "`}</p>
+                          <p id="user-description">{user.description}</p>
                           <Moment diff={user.birthdate} unit="years">
                             2019-04-19T12:59-0500
                           </Moment>

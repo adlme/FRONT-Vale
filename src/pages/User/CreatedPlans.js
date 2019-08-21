@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import userAPI from '../../services/user-service';
 import Moment from 'react-moment';
-import Nav from '../../components/Nav';
-import LowNav from '../../components/LowNav';
+import BackNav from '../../components/BackNav';
 
 class CreatedPlans extends Component {
   state = {
@@ -22,9 +21,9 @@ class CreatedPlans extends Component {
     console.log(this.state.plans)
     return (
       <div>
-        <Nav />
+        <BackNav />
         <section className="plans-wrapper">
-          <h1>Plans</h1>
+          <h1>Created plans</h1>
           <section className="plans-list"> 
             {this.state.plans.length > 0 ? 
             !this.state.loading && this.state.plans.plans.map((plan) => {
@@ -52,7 +51,6 @@ class CreatedPlans extends Component {
             
             </section>
         </section>
-        <LowNav/>
       </div>
     )
   }

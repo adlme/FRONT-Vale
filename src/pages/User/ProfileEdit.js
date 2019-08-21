@@ -5,6 +5,8 @@ import userAPI from '../../services/user-service';
 import BackNav from '../../components/BackNav';
 import withAuth from '../../components/withAuth';
 import Moment from 'react-moment';
+import FileUploadComponent from '../../components/FileUploadComponent';
+
 
 
 class Onboarding extends Component {
@@ -27,6 +29,7 @@ class Onboarding extends Component {
     profilePhoto: '',
     redirect: false,
     loading: true,
+    avatarURL: '',
   }
 
   componentDidMount(){
@@ -88,7 +91,7 @@ class Onboarding extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const {email, name, description, gender, birthdate, phoneNum, profilePhoto, redirect, ...interestsState} = this.state;
+    const {email, name, description, gender, birthdate, phoneNum, profilePhoto, redirect, avatarURL, ...interestsState} = this.state;
     const interests = [];
     for (const key in interestsState) {
       if(interestsState[key] === true){
@@ -102,7 +105,8 @@ class Onboarding extends Component {
       gender,
       birthdate,
       interests,
-      phoneNum
+      phoneNum,
+      avatarURL,
     })
     .then(() => {
       this.props.updateUserData()
@@ -114,6 +118,13 @@ class Onboarding extends Component {
     })
     .catch(error => console.log(error))
   }
+
+  avatarUpload = (url) => {
+    this.setState({
+      avatarURL: url
+    })
+  }
+
   render() {
     const {email, name, description, gender, birthdate, phoneNum, redirect, loading,Culture, Drinks, Food, Party, Shopping, Sports, Travel, Volunteering, Others} = this.state;
     return !loading ? 
@@ -172,6 +183,7 @@ class Onboarding extends Component {
             <input type="text" name="phoneNum" id="phoneNum" placeholder="&nbsp;" required onChange={this.handleOnChange} value={phoneNum} />
             <span className="label">Phone number</span>
           </label>
+          <FileUploadComponent url={this.avatarUpload}/>
 
           {/* <label htmlFor="profile-photo">Profile picture</label>
             <input className="profile-photo" type="file" name="photo" id="profile-photo" /> */}

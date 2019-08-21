@@ -32,13 +32,15 @@ class Nav extends Component {
                   <img className="search-icon" src="../images/search-icon-gray.png" alt="search-icon"/>
             </div> */}
             <div className="contacts-icon-wrapper">
-              {this.props.match.path === '/plans' ? 
+              {this.props.match.path.includes('/plans') ? 
                 <Link to="/users">
-                    <img className="vale-icon" src="../images/users.png" alt="users-icon"/>
+                  {/* <p className="mode">Users</p> */}
+                  <img className="vale-icon" src={require("../images/users.png")} alt="users-icon"/>
                 </Link>
               :
                 <Link to="/plans">
-                  <img className="vale-icon" src="../images/plans-green.png" alt="plans-icon"/>
+                  {/* <p className="mode">Plans</p> */}
+                  <img className="vale-icon" src={require("../images/plans-green.png")} alt="plans-icon"/>
                 </Link>  
               }
             </div>
@@ -52,9 +54,13 @@ class Nav extends Component {
           <>
             <img className="avatar" src={this.props.user.image} alt="User-avatar" />
             <h2 id="username-profile">{this.props.user.name}</h2>
-            <Link to="/user/profile">My profile</Link>
-            <Link to="/user/created-plans">My plans</Link>
-            <Link to="/user/joined-plans">Attending</Link>
+            <Link to="/user/profile">Profile</Link>
+            <Link to="/user/created-plans">Created plans</Link>
+            <Link to="/user/joined-plans">Joined plans</Link>
+            <Link to="#0" id="chats">
+              Chats
+              <img src={require("../images/3-green.png")} alt="messages" id="unread-messages"/>       
+            </Link>
             <button id="logout-btn" onClick={()=>{this.props.logout(); this.props.history.push("/welcome")}}>Log Out</button>
           </>
           :
@@ -62,9 +68,10 @@ class Nav extends Component {
               <img className="avatar" src={require("../images/default-avatar.png")} alt="default-avatar"/>
               <p id="email-profile">{this.props.user.email}</p>
               {/* <p>Please sign up or log in!</p> */}
-              <Link to="/user/onboarding">My profile</Link>
-              <Link to="/user/onboarding">My plans</Link>
-              <Link to="/user/onboarding">Attending</Link>
+              <Link to="/user/onboarding">Profile</Link>
+              <Link to="/user/onboarding">Created plans</Link>
+              <Link to="/user/onboarding">Joined Plans</Link>
+              <Link to="#0">Chats</Link>
               <button id="logout-btn" onClick={()=>{this.props.logout(); this.props.history.push("/welcome/#slide-cta")}}>Log Out</button>
           </>     
         }

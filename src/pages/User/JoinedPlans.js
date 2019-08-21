@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import userAPI from '../../services/user-service';
 import Moment from 'react-moment';
-import Nav from '../../components/Nav';
-import LowNav from '../../components/LowNav';
+import BackNav from '../../components/BackNav';
 
 class JoinedPlans extends Component {
   state = {
@@ -23,7 +22,7 @@ class JoinedPlans extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <BackNav/>
         <section className="plans-wrapper">
           <h1>Joined Plans</h1>
           <section className="plans-list"> 
@@ -53,7 +52,6 @@ class JoinedPlans extends Component {
             
             </section>
         </section>
-        <LowNav/>
       </div>
     )
   }
