@@ -89,11 +89,11 @@ class Plan extends Component {
         <p className="category">{plan.category}</p>
 
         {this.state.loading ? null : 
-          planJoinedUsers.map(joiner => (  
             <div className="plan-detail-joiner-info">
+           { planJoinedUsers.map(joiner => (  
               <img className="avatar users-image" id="plan-detail-joiner-avatar" src={joiner.image} alt="user"/>
+            )) }
             </div>
-          )) 
         }
 
     </div>

@@ -1352,6 +1352,8 @@ display:none;
   color: grey;
   margin: 0;
   text-align: center;
+  font-style: italic;
+  font-size: 15px;
 }
 
 #users-detail{
