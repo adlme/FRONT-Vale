@@ -144,7 +144,7 @@ class Onboarding extends Component {
 
           <label htmlFor="description" className="inp">
               <input type="text" name="description" id="description" placeholder="&nbsp;" required  onChange={this.handleOnChange} value={description}/>
-              <span className="label">Description</span>
+              <span className="label">Why are you here?</span>
           </label>
 
           <div className="two-cols">
@@ -162,7 +162,6 @@ class Onboarding extends Component {
               {/* <Moment format="DD/MM/YYYY"> */}
                <input type="date" name="birthdate" id="birthdate" required  onChange={this.handleOnChange} value={birthdate}/>
               {/* </Moment> */}
-              <p>{birthdate}</p>
             </div>
           </div>
 

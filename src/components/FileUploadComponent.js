@@ -35,7 +35,7 @@ class FileUploadComponent extends Component {
     const {isUploading, progress, avatarURL} = this.state;
     return (
       <div className="upload-photo">
-          <label style={{backgroundColor: '#6bbc57', color: 'white', padding: 10, borderRadius: 4, pointer: 'cursor'}}>
+          <label style={{backgroundColor: 'white', color: "rgb(107, 188, 87)", padding: 8, borderRadius: 4, pointer: 'cursor',borderdColor: "rgb(107, 188, 87)"}}>
             Upload profile picture
             <FileUploader
               hidden

@@ -57,41 +57,41 @@ class CreatePlan extends Component {
       <>
         <BackNav/>
         <div className="form-with-title-wrapper">
-        <h1>Create your plan</h1>
-        <form className = "form" onSubmit={this.handleSubmit}>
-          
-          <label htmlFor="title" className="inp">
-            <input type="text" name="title" id="title" onChange={this.handleOnChange} value={title} minLength="8" placeholder="&nbsp;" required />
-            <span className="label">Title</span>
+          <h1>Create your plan</h1>
+          <form className = "form" onSubmit={this.handleSubmit}>
+            
+            <label htmlFor="title" className="inp">
+              <input type="text" name="title" id="title" onChange={this.handleOnChange} value={title} minLength="8" maxLength="40" placeholder="&nbsp;" required />
+              <span className="label">Title</span>
+            </label>
+    
+          <label htmlFor="description" className="inp">
+            <input type="text" name="description" id="description-create" onChange={this.handleOnChange} value={description} minLength="8" maxLength="50" placeholder="&nbsp;" required />
+            <span className="label">Brief description</span>
           </label>
-  
-        <label htmlFor="description" className="inp">
-          <input type="text" name="description" id="description" onChange={this.handleOnChange} value={description} minLength="8" placeholder="&nbsp;" required />
-          <span className="label">Description</span>
-        </label>
-  
-        <label htmlFor="date" className="inp">
-            <span className="label">Date</span>
-            <input className="date-input" type="datetime-local" name="date" id="date" onChange={this.handleOnChange} value={date} placeholder="&nbsp;" required />
-        </label>
-  
-  
-        <label htmlFor="category">Category</label>
-        <select defaultValue={this.state.category} name="category" onChange={this.handleOnChange} value={category} >
-          <option disabled={true} value='' >Choose category</option>  
-          <option value="Culture">Culture</option>
-          <option value="Drinks">Drinks</option>
-          <option value="Food">Food</option>
-          <option value="Party">Party</option>
-          <option value="Shopping">Shopping</option>
-          <option value="Sports">Sports</option>
-          <option value="Travel">Travel</option>
-          <option value="Volunteering">Volunteering</option>
-          <option value="Others">Others</option>
-        </select>
-        {this.state.message ? 
-        <p id='error'>{this.state.message}</p>
-        : null}
+    
+          <label htmlFor="date" className="inp">
+              <span className="label">Date</span>
+              <input className="date-input" type="datetime-local" name="date" id="date" onChange={this.handleOnChange} value={date} placeholder="&nbsp;" required />
+          </label>
+    
+    
+          <label htmlFor="category">Category</label>
+          <select defaultValue={this.state.category} name="category" onChange={this.handleOnChange} value={category} >
+            <option disabled={true} value='' >Choose category</option>  
+            <option value="Culture">Culture</option>
+            <option value="Drinks">Drinks</option>
+            <option value="Food">Food</option>
+            <option value="Party">Party</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Sports">Sports</option>
+            <option value="Travel">Travel</option>
+            <option value="Volunteering">Volunteering</option>
+            <option value="Others">Others</option>
+          </select>
+          {this.state.message ? 
+          <p id='error'>{this.state.message}</p>
+          : null}
  
      
         <div className="form-buttons">
