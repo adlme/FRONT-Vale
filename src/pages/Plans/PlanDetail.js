@@ -7,6 +7,8 @@ import BackNav from '../../components/BackNav';
 class Plan extends Component {
   state = {
     plan: {},
+    planOwner: '',
+    planJoinedUsers: [],
     plansWithCounter: {},
     user: {},
     isJoined: false,
@@ -18,7 +20,7 @@ class Plan extends Component {
     plansAPI.getOnePlan(this.props.match.params.id)
     .then((data) => {
       // console.log(data)
-      this.setState({plan: data.plan, plansWithCounter: data.plansWithCounter, user: data.fullUser, isJoined: data.isJoined, isOwner: data.isOwner, loading: false,})
+      this.setState({plan: data.plan, planOwner: data.planOwner, planJoinedUsers: data.planJoinedUsers ,plansWithCounter: data.plansWithCounter, user: data.fullUser, isJoined: data.isJoined, isOwner: data.isOwner, loading: false,})
     })
     .catch(error => console.log(error))
   }
@@ -57,30 +59,48 @@ class Plan extends Component {
 
 
   render() {
-    const {plan, plansWithCounter} = this.state
+    const {plan, plansWithCounter, planOwner, planJoinedUsers} = this.state
+    console.log(planOwner)
     return (
     <>
     <BackNav />
     
-    
     <div className="form-wrapper" id="plan-detail">
-        <div className="card-grid" id="plan-detail">
-          <h3 className="title">{plan.title}</h3>
-          <p className="description">{plan.description}</p>
-          <p className="date">
-          <Moment format="D MMM" style={{paddingRight: 10}}>
-              {plan.date}
-          </Moment>
-          <Moment format="hh:mm">
-              {plan.date}
-          </Moment>
-          </p>
-          <p className="category">{plan.category}</p>
-    {this.state.loading ? null : 
-          <p className="attendees">&#128101; {plansWithCounter[0].counter}</p>
+      <div className="plan-detail-owner-info">
+        <Link to={`/users/${planOwner._id}`}>
+          <img className="avatar users-image" id="plan-detail-owner-avatar" src={planOwner.image} alt="user"/>
+        </Link>
+        <Link to={`/users/${planOwner._id}`}>
+        <p id="name">{planOwner.name}</p>
+        </Link>
+      </div>
+
+      <div className="card-grid" id="plan-detail">
+        <h3 className="title">{plan.title}</h3>
+        <p className="description">{plan.description}</p>
+        <p className="date">
+        <Moment format="D MMM" style={{paddingRight: 10}}>
+            {plan.date}
+        </Moment>
+        <Moment format="hh:mm">
+            {plan.date}
+        </Moment>
+        </p>
+        <p className="category">{plan.category}</p>
+
+        {this.state.loading ? null : 
+          planJoinedUsers.map(joiner => (  
+            <div className="plan-detail-joiner-info">
+              <img className="avatar users-image" id="plan-detail-joiner-avatar" src={joiner.image} alt="user"/>
+            </div>
+          )) 
         }
-        </div>
-      
+
+    </div>
+
+
+
+
       {this.state.user.status==='created' ? 
           <form>
             <div className="form-buttons" id="signup">

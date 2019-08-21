@@ -1065,13 +1065,9 @@ display:none;
   font-family: var(--sixthFont);
 }
 
-.card-grid#plan-detail{
-
-}
-
 .card-grid#plan-detail .title{
-  font-size: 40px;
-  padding-bottom: 2vh;
+  font-size: 30px;
+  padding-bottom: 1vh;
 }
 
 .card-grid#plan-detail .date{
@@ -1425,4 +1421,36 @@ display:none;
 
 textarea#description{
   height: 40px
+}
+
+/* PLAN DETAIL */
+.plan-detail-owner-info{
+  display: flex;
+  align-items: center;
+  align-self: baseline;
+  padding-bottom: 15px;
+}
+
+.plan-detail-owner-info #name{
+  font-size: 18px;
+  color: var(--colorPrimary);
+  padding-left: 15px;
+}
+
+#plan-detail-owner-avatar{
+  width: 50px;
+  height: 50px;
+}
+
+.plan-detail-joiner-info{
+  grid-area: attendees;
+  display: flex;
+  align-items: center;
+  align-self: baseline;
+}
+
+#plan-detail-joiner-avatar{
+  width: 30px;
+  height: 30px;
+  /* border: 0.5 solid var(--colorPrimary); */
 }

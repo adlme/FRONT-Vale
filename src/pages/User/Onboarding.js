@@ -38,7 +38,7 @@ class Onboarding extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const {name, gender, birthdate, phoneNum, profilePhoto, redirect, avatarURL, ...interestsState} = this.state;
+    const {name, description, gender, birthdate, phoneNum, profilePhoto, redirect, avatarURL, ...interestsState} = this.state;
     const interests = [];
     for (const key in interestsState) {
       if(interestsState[key] === true){
@@ -47,6 +47,7 @@ class Onboarding extends Component {
     }
     userAPI.onboarding({
       name,
+      description,
       gender,
       birthdate,
       interests,

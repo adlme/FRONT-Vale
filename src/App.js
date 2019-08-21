@@ -36,9 +36,6 @@ const config = {
 };
 firebase.initializeApp(config);
 
-
-
-
 class App extends Component {
   render() {
     return (
@@ -56,9 +53,9 @@ class App extends Component {
                 <PrivateRoute exact path="/users" component={Users} />
                 <PrivateRoute exact path="/users/:id" component={UsersDetail} />
                 <OnboardedRoute exact path="/plans/create" component={Create} />
-                <OnboardedRoute exact path="/user/joined-plans" component={JoinedPlans} />         
+                <OnboardedRoute exact path="/user/joined-plans" component={JoinedPlans} />
                 <OnboardedRoute exact path="/user/profile" component={Profile} /> 
-                <OnboardedRoute exact path="/user/profile/edit" component={ProfileEdit} />           
+                <OnboardedRoute exact path="/user/profile/edit" component={ProfileEdit} />   
                 <PrivateRoute exact path="/plans/categories" component={Categories} />
                 <PrivateRoute exact path="/plans/category/:id" component={Category} />
                 <PrivateRoute path="/plans/:id" component={PlanDetail} />

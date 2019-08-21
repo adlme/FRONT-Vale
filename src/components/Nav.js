@@ -40,7 +40,7 @@ class Nav extends Component {
               :
                 <Link to="/plans">
                   {/* <p className="mode">Plans</p> */}
-                  <img className="vale-icon" src={require("../images/plans-green.png")} alt="plans-icon"/>
+                  <img className="vale-icon" src={require("../images/stars-green.png")} alt="plans-icon"/>
                 </Link>  
               }
             </div>
