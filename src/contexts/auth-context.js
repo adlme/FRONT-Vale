@@ -66,7 +66,9 @@ class AuthProvider extends Component {
     const {user, isLoggedIn, isLoading} = this.state;
     return (
       <>
-        {isLoading ? <p>Loading...</p> : (
+        {isLoading ? 
+          <img className="loading-gif" src={require("../images/loading/indeterminate_loader_blur2.gif")} alt=""/>
+          : (
             <AuthContext.Provider value={ 
               {
                 user,

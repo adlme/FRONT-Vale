@@ -1549,3 +1549,9 @@ textarea#description{
   position: inherit !important;
 }
 
+.loading-gif{
+  position: absolute;
+  left: 0;
+  top: 30%;
+  width: 100vw;
+}
