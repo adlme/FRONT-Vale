@@ -53,7 +53,7 @@ class Plans extends Component {
                           <h3 className="title">{plan.title}</h3>
                           <p className="description">{plan.description}</p>
                           <p className="date">
-                          <Moment format="D MMM" style={{paddingRight: 10}}>
+                          <Moment format="D MMM" style={{paddingRight: 5}}>
                               {plan.date}
                           </Moment>
                           <Moment format="hh:mm">
@@ -61,7 +61,10 @@ class Plans extends Component {
                           </Moment>
                           </p>
                           <p className="category">{plan.category}</p>
-                          <p className="attendees">&#128101; {plan.counter}</p>
+                          <div className="attendees">
+                            <p className="attendees-number"> {plan.counter}</p>
+                            <img className="users-joined-icon" src={require("../../images/users-joined-icon-gray.png")} alt=""/>
+                          </div>                      
                         </div>
                       </Link>
                     </div>              

@@ -478,8 +478,19 @@ p {
   font-size: 12px;
   font-weight: 1000;
   text-align: center;
-  color: grey
+  color: grey;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.users-joined-icon{
+  width: 14px;
+  height: 14px;
+}
 
+.attendees-number{
+  color: var(--colorPrimary) !important;
+  padding-right: 5px; 
 }
 
 
@@ -1537,3 +1548,4 @@ textarea#description{
 .map{
   position: inherit !important;
 }
+
