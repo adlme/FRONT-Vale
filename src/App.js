@@ -10,6 +10,7 @@ import Onboarding from './pages/User/Onboarding';
 import PlanDetail from './pages/Plans/PlanDetail';
 import Create from './pages/Plans/Create';
 import Categories from './pages/Plans/Categories';
+import MapComponent from './components/MapComponent';
 import Category from './pages/Plans/Category';
 import AuthProvider from './contexts/auth-context';
 import AnonRoute from './components/AnonRoute';
@@ -51,6 +52,7 @@ class App extends Component {
                 <PrivateRoute exact path="/" render={() => {
                   return <Redirect to='/plans' />
                 }} />
+                <PrivateRoute path="/plans/map" component={MapComponent} />
                 <PrivateRoute exact path="/plans" component={Plans} />
                 <PrivateRoute exact path="/users" component={Users} />
                 <PrivateRoute exact path="/users/:id" component={UsersDetail} />

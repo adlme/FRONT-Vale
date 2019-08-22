@@ -140,6 +140,7 @@ h1{
   text-align: left;
   font-family: var(--sixthFont);
   font-size: 30px;
+  font-weight: initial;
 }
 
 .form-title{
@@ -154,6 +155,7 @@ h2 {}
 
 h3 {
   font-size: 18px;
+  font-weight: initial !important;
 }
 
 p {
@@ -625,6 +627,7 @@ nav .grid-container#back-nav{
   background-color: white;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100vw;
   z-index: 9;
 }
@@ -1531,3 +1534,6 @@ textarea#description{
   text-align: left;
 }
 
+.map{
+  position: inherit !important;
+}
