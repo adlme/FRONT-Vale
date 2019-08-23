@@ -10,6 +10,8 @@ class UsersDetail extends Component {
     loading: true,
   }
 
+
+
   componentDidMount(){
     usersAPI.getOneUser(this.props.match.params.id)
     .then((user) => {
@@ -37,6 +39,7 @@ class UsersDetail extends Component {
     <div className="form-buttons" id="signup">
       <button className="btn btn-signup">Chat</button>
     </div>
+    {/* aquí meter el call al chatService que hay en el chatList.js para pasarle los usuarios */}
     </div>
     </>
     )}

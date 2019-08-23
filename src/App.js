@@ -23,6 +23,7 @@ import Profile from './pages/User/Profile'
 import ProfileEdit from './pages/User/ProfileEdit'
 import UsersDetail from './pages/Users/UsersDetail';
 import FileUploadComponent from './components/FileUploadComponent';
+import Chat from './components/Chat/Chat';
 
 import './App.css';
 
@@ -56,6 +57,7 @@ class App extends Component {
                 <PrivateRoute exact path="/plans" component={Plans} />
                 <PrivateRoute exact path="/users" component={Users} />
                 <PrivateRoute exact path="/users/:id" component={UsersDetail} />
+                <OnboardedRoute exact path="/chat" component={Chat} />
                 <OnboardedRoute exact path="/plans/create" component={Create} />
                 <OnboardedRoute exact path="/user/joined-plans" component={JoinedPlans} />
                 <OnboardedRoute exact path="/user/profile" component={Profile} /> 
